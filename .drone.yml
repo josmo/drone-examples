@@ -9,3 +9,12 @@ pipeline:
     commands:
       - go build -v -ldflags "-X main.build=${DRONE_BUILD_NUMBER}" -a -o release/linux/amd64/hello
 
+  build_linux_arm64:
+    image: golang:1.9
+    group: build
+    environment:
+      - GOOS=darwin
+      - GOARCH=amd64
+      - CGO_ENABLED=0
+    commands:
+      - go build -v -ldflags "-X main.build=${DRONE_BUILD_NUMBER}" -a -o release/darwin/amd64/hello

@@ -19,3 +19,13 @@ pipeline:
     commands:
       - go build -v -ldflags "-X main.build=${DRONE_BUILD_NUMBER}" -a -o release/darwin/amd64/hello
       - tar -cvzf hello-darwin-amd64.tar.gz -C release/darwin/amd64/ .
+  publish_github:
+    image: plugins/github-release
+    secrets: [ github_token ]
+    files: ./*.tar.gz
+    checksum:
+      - md5
+      - sha1
+      - sha256
+    when:
+      event: tag

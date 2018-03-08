@@ -29,3 +29,12 @@ pipeline:
       - sha256
     when:
       event: tag
+  notify:
+    image: plugins/slack
+    webhook: hook
+    channel: tbd
+    username: SuperDrone
+    image_url: http://cdn.meme.am/instances/51000361.jpg
+    when:
+      status: [ failure ]
+      local: false

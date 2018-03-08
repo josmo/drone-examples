@@ -31,8 +31,8 @@ pipeline:
       event: tag
   notify:
     image: plugins/slack
-    webhook: hook
-    channel: tbd
+    webhook: https://hooks.slack.com/services/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
+    channel: testing-drone
     username: SuperDrone
     image_url: http://cdn.meme.am/instances/51000361.jpg
     when:
